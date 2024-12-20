@@ -1,0 +1,42 @@
+body {
+    background-color: beige;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* display: flex; */
+}
+
+#gallery-header {
+    color: brown;
+    /* position: absolute;
+    right: 10px;
+    top: 10px; */
+
+}
+
+.header {
+    text-transform: uppercase;
+    
+}
+
+#user-container {
+    /* display: flex; */
+    border: 1px solid black;
+    /* position: absolute;
+    right: 30px;
+    top: 30px; */
+}
+
+#images-container {
+    border: 1px solid black;
+    /* height: 20px;
+    width: auto;
+    background-color: aquamarine; */
+}
+
+#header-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#albums-container {
+    border: 1px solid black;
+}
