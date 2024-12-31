@@ -106,16 +106,13 @@ async function loadAlbumsWithThumbnails() {
             `;
 
             const photosContainer = albumElement.querySelector('.photos');
-            const photosFragment = document.createDocumentFragment();
-            albumPhotos.forEach((photo, index) => {
-                setTimeout(() => {
-                    const img = document.createElement('img');
-                    img.src = photo.thumbnailUrl;
-                    img.alt = photo.title;
-                    photosFragment.appendChild(img);
-                }, index * 50);
-            });
-            photosContainer.appendChild(photosFragment);
+            albumPhotos.forEach(photo => {
+                const img = document.createElement('img');
+                img.src = photo.thumbnailUrl;
+                img.alt = photo.title;
+                img.classList.add('photo');
+                photosContainer.appendChild(img);
+                });
 
             const thumbnailElement = albumElement.querySelector('.thumbnail');
             thumbnailElement.addEventListener('click', () => {
