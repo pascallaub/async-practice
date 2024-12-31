@@ -40,3 +40,31 @@ body {
 #albums-container {
     border: 1px solid black;
 }
+
+.album {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.album h2 {
+    margin: 0 0 10px 0;
+}
+
+.thumbnail {
+    cursor: pointer;
+    display: block;
+    margin-bottom: 10px;
+    max-width: 150px;
+}
+
+.photos {
+    display: none;
+    margin-top: 10px;
+}
+
+.photos img {
+    max-width: 100px;
+    margin: 5px;
+}

@@ -38,7 +38,6 @@ async function fetchImageData() {
     } catch (error) {
         console.log("Wir bekommen beim Fetching der Image API folgenden Fehler: ", error)
     }
-    
 }
 
 // define async to fetch albums
@@ -84,8 +83,55 @@ function renderAlbums(){
     });
 }
 
+// define function for thumbnails and album images
+async function loadAlbumsWithThumbnails() {
+    try {
+        const [albums, photos] = await Promise.all([
+            fetch('https://jsonplaceholder.typicode.com/albums').then(res => res.json()),
+            fetch('https://jsonplaceholder.typicode.com/photos').then(res => res.json())
+        ]);
+
+        const albumsContainer = document.getElementById('albums');
+
+        albums.forEach(album => {
+            const albumPhotos = photos.filter(photo => photo.albumId === album.id);
+            const thumbnail = albumPhotos[0];
+
+            const albumElement = document.createElement('div');
+            albumElement.classList.add('album');
+            albumElement.innerHTML = `
+                <h2>${album.title}</h2>
+                <img src="${thumbnail.thumbnailUrl}" alt="${thumbnail.title}" class="thumbnail">
+                <div class="photos"></div>
+            `;
+
+            const photosContainer = albumElement.querySelector('.photos');
+            const photosFragment = document.createDocumentFragment();
+            albumPhotos.forEach((photo, index) => {
+                setTimeout(() => {
+                    const img = document.createElement('img');
+                    img.src = photo.thumbnailUrl;
+                    img.alt = photo.title;
+                    photosFragment.appendChild(img);
+                }, index * 50);
+            });
+            photosContainer.appendChild(photosFragment);
+
+            const thumbnailElement = albumElement.querySelector('.thumbnail');
+            thumbnailElement.addEventListener('click', () => {
+                photosContainer.style.display = photosContainer.style.display === 'none' ? 'block' : 'none';
+            });
+
+            albumsContainer.appendChild(albumElement);
+        });
+    } catch (error) {
+        console.error('Fehler:', error);
+    }
+}
+
 
 fetchUserData();
 fetchImageData();
 fetchAlbumData();
+loadAlbumsWithThumbnails();
 // showUsers();
