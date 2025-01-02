@@ -1,5 +1,14 @@
 console.log("Script loaded");
 console.log("Das ist der zweite Aufruf");
+
+const toggleImagesButton = document.getElementById('show-images');
+const toggleAlbumsButton = document.getElementById('show-albums');
+const toggleThumbnailsButton = document.getElementById('show-thumb');
+
+const imagesContainer = document.getElementById('images-container');
+const albumsContainer = document.getElementById('albums-container');
+const thumbnailsContainer = document.getElementById('thumbnails-container');
+
 const userlist = document.getElementById('user-list');
 const imageList = document.getElementById('image-list');
 const albumList = document.getElementById('album-list')
@@ -125,6 +134,24 @@ async function loadAlbumsWithThumbnails() {
         console.error('Fehler:', error);
     }
 }
+
+toggleImagesButton.addEventListener('click', () => {
+    const isVisible = imagesContainer.style.display === 'block';
+    imagesContainer.style.display = isVisible ? 'none' : 'block';
+    toggleImagesButton.textContent = isVisible ? 'Show Images' : 'Hide Images';
+});
+
+toggleAlbumsButton.addEventListener('click', () => {
+    const isVisible = albumsContainer.style.display === 'block';
+    albumsContainer.style.display = isVisible ? 'none' : 'block';
+    toggleAlbumsButton.textContent = isVisible ? 'Show Albums' : 'Hide Albums';
+});
+
+toggleThumbnailsButton.addEventListener('click', () => {
+    const isVisible = thumbnailsContainer.style.display === 'block';
+    thumbnailsContainer.style.display = isVisible ? 'none' : 'block';
+    toggleThumbnailsButton.textContent = isVisible ? 'Show Thumbnails' : 'Hide Thumbnails';
+});
 
 
 fetchUserData();
