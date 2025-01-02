@@ -9,6 +9,10 @@ const imagesContainer = document.getElementById('images-container');
 const albumsContainer = document.getElementById('albums-container');
 const thumbnailsContainer = document.getElementById('thumbnails-container');
 
+imagesContainer.style.display = 'none';
+albumsContainer.style.display = 'none';
+thumbnailsContainer.style.display = 'none';
+
 const userlist = document.getElementById('user-list');
 const imageList = document.getElementById('image-list');
 const albumList = document.getElementById('album-list')
